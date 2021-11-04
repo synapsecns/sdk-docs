@@ -138,8 +138,8 @@ are supported and useable on the Synapse Protocol.
   - Returns: 
     - `boolean`
     - `true` if `token` is supported by the Synapse Protocol on `network`, `false` otherwise.
-- `supportedChainIds`
-  - Returns an array of `numbers` corresponding to the chain ids of all networks supported by the Synapse Protocol.
-  - Returns: 
-    - `number[]` 
-    - Array which contains the pre-defined chain id constants `Arbitrum`, `Avalanche`, `BSC`, `Ethereum`, `Fantom`, `Polygon`, and `Harmony`.
+- `supportedNetworks`
+  - Returns an array of `Network` instances corresponding to all networks supported by the Synapse Protocol.
+  - Returns:
+    - `Network[]`
+    - Array which contains the pre-defined `Network` instances `Arbitrum`, `Avalanche`, `BSC`, `Ethereum`, `Fantom`, `Polygon`, and `Harmony`.

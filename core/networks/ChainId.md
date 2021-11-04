@@ -80,8 +80,9 @@ are supported and useable on the Synapse Protocol.
   - Returns: 
     - `number`
     - `n` returned as a standard NodeJS `number`.
-- `supportedNetworks`
-  - Returns an array of `Network` instances corresponding to all networks supported by the Synapse Protocol.
+
+- `supportedChainIds`
+  - Returns an array of `numbers` corresponding to the chain ids of all networks supported by the Synapse Protocol.
   - Returns:
-    - `Network[]`
-    - Array which contains the pre-defined `Network` instances `Arbitrum`, `Avalanche`, `BSC`, `Ethereum`, `Fantom`, `Polygon`, and `Harmony`.
+    - `number[]`
+    - Array which contains the pre-defined chain id constants `Arbitrum`, `Avalanche`, `BSC`, `Ethereum`, `Fantom`, `Polygon`, and `Harmony`.
