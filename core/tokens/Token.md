@@ -15,7 +15,7 @@ Unless otherwise specified, all instance variables are **read only** and set by 
     though there are some exceptions: for example, USDC and USDT both use 18 decimal places for precision on the Binance Smart Chain, but 6 decimals
     on all other chains.
 - `addresses` (`{ [chainId: number] => string }`) - This field is similarly shaped to `decimals`, in that it is a mapping with shape `chain id => address for chain (string)`,
-    containing the on-chain address of this token for respective Chain ID values.
+    containing the on-chain addresses of this token for respective Chain ID values.
 - `swapType` (`string`) - The "swap type" of this token, explained further in [SwapType](./SwapType.md).
 
 ## Functions 
