@@ -6,7 +6,7 @@ The Synapse Protocol SDK provides pre-defined `Token` instances for all tokens s
 
 ## Instance variables
 
-Unless specifically specified, all instance variables are **read only** and set by the `constructor`.
+Unless otherwise specified, all instance variables are **read only** and set by the `constructor`.
 
 - `name` (`string`) - The "official" name of the token. Example: "USD Circle" (for USDC)
 - `symbol` (`string`) - Symbol the token is known by both on and off-chain. Examples: "USDT" (Tether's USD stablecoin), "DOGE" (for Dogecoin)
