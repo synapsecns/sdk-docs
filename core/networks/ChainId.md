@@ -60,6 +60,9 @@ are supported and useable on the Synapse Protocol.
 - `Polygon`
   - Value: `137`
 
+- `Harmony`:
+  - Value: `1666600000`
+
 ## Functions
 
 - `asBigNumber`
@@ -77,3 +80,8 @@ are supported and useable on the Synapse Protocol.
   - Returns: 
     - `number`
     - `n` returned as a standard NodeJS `number`.
+- `supportedNetworks`
+  - Returns an array of `Network` instances corresponding to all networks supported by the Synapse Protocol.
+  - Returns:
+    - `Network[]`
+    - Array which contains the pre-defined `Network` instances `Arbitrum`, `Avalanche`, `BSC`, `Ethereum`, `Fantom`, `Polygon`, and `Harmony`.

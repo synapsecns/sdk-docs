@@ -73,18 +73,18 @@ are supported and useable on the Synapse Protocol.
     - `chainSymbol: "ETH`
 
 - `Avalanche`
-    - Constructor params:
-      - `name:        "Avalanche C-Chain"`
-      - `names:      ["avalanche", "avax"]`
-      - `chainId:      ChainId.Avalanche`
-      - `chainSymbol: "AVAX"`
+  - Constructor params:
+    - `name:        "Avalanche C-Chain"`
+    - `names:      ["avalanche", "avax"]`
+    - `chainId:      ChainId.Avalanche`
+    - `chainSymbol: "AVAX"`
 
 - `BSC`
-    - Constructor params:
-        - `name:        "Binance Smart Chain"`
-        - `names:      ["smart chain", "bsc"]`
-        - `chainId:      ChainId.BSC`
-        - `chainSymbol: "BNB"`
+  - Constructor params:
+    - `name:        "Binance Smart Chain"`
+    - `names:      ["smart chain", "bsc"]`
+    - `chainId:      ChainId.BSC`
+    - `chainSymbol: "BNB"`
 
 - `Ethereum`
   - Constructor params:
@@ -106,6 +106,12 @@ are supported and useable on the Synapse Protocol.
     - `names:      ["poly", "matic"]`
     - `chainId:      ChainId.Polygon`
     - `chainSymbol: "MATIC"`
+
+- `Harmony`
+  - Constructor params:
+    - `name:        "Harmony"`
+    - `chainId:      ChainId.Harmony`
+    - `chainSymbol: "ONE"`
 
 
 ## Exported functions
@@ -132,8 +138,8 @@ are supported and useable on the Synapse Protocol.
   - Returns: 
     - `boolean`
     - `true` if `token` is supported by the Synapse Protocol on `network`, `false` otherwise.
-- `supportedNetworks`
-  - Returns an array of `Network` instances corresponding to all networks supported by the Synapse Protocol.
+- `supportedChainIds`
+  - Returns an array of `numbers` corresponding to the chain ids of all networks supported by the Synapse Protocol.
   - Returns: 
-    - `Network[]` 
-    - Array which contains the pre-defined `Network` instances `Arbitrum`, `Avalanche`, `BSC`, `Ethereum`, `Fantom`, and `Polygon`
+    - `number[]` 
+    - Array which contains the pre-defined chain id constants `Arbitrum`, `Avalanche`, `BSC`, `Ethereum`, `Fantom`, `Polygon`, and `Harmony`.
