@@ -1,6 +1,6 @@
 # Networks
 
-`namespace Networks` provides constants and functions for working with blockchain networks supported by the SDK. 
+The `Networks` namespace provides constants and functions for working with blockchain networks supported by the SDK. 
 
 ## Import
 The Networks namespace can be imported like so:
@@ -26,7 +26,7 @@ function printNetworkNameFromChainId(chainId: number) {
 
 printNetworkNameFromChainId(ChainId.POLYGON); // outputs "Polygon"
 
-const nativeCurrency: string = Networks.AVALANCHE.chainSymbol;
+const nativeCurrency: string = Networks.AVALANCHE.chainCurrency;
 
 console.log(`The native currency symbol for the Avalanche network is ${nativeCurrency}`); // nativeCurrency will output as "AVAX"
 ```
@@ -42,7 +42,7 @@ A network contains the following read-only attributes:
 
 - `name` (`string`) - The primary or official name of the network, for example "Binance Smart Chain"
 - `names` (`string[]`) - "Unofficial" or shorthand names for the network
-- `chainSymbol` (`string`) - The native currency symbol for this network. Examples: "BNB" on Binance Smart Chain, "AVAX" on Avalanche.
+- `chainCurrency` (`string`) - The native currency symbol for this network. Examples: "BNB" on Binance Smart Chain, "AVAX" on Avalanche.
 - `chainId` (`number`) - The network's Chain ID. For pre-defined `Network` instances, this will use a constant defined in the [ChainId](./ChainId.md) namespace.
 - `tokens` ([`Token[]`](../tokens/Token.md)]) - An array containing [Token](../tokens/Token.md) instances for all tokens which the Synapse Protocol supports on this network.
 - `tokenAddresses` (`string[]`) - An array of strings containing the actual, on-chain address of all entries in `tokens`.
@@ -56,62 +56,62 @@ The `Network` class also provides the following functions:
   - Returns: 
     - `boolean`
     - `true` if `token` is supported for use on the network by the Synapse Protocol, `false` otherwise
-- `usesMetaBridgeZap`
-  - Returns `true` if the Synapse Bridge Zap contract for this network is a `NerveMetaBridgeZap`, rather than a `NerveBridgeZap`. 
-    Currently, Bridge Zaps for all networks **except** the Ethereum mainnet are `NerveMetaBridgeZap` contracts.
+- `zapIsL2BridgeZap`
+  - Returns `true` if the Synapse Bridge Zap contract for this network is a `L2BridgeZap`, rather than a `NerveBridgeZap`. 
+    Currently, Bridge Zaps for all networks **except** the Ethereum mainnet are `L2BridgeZap` contracts.
 
 ## Supported Networks
 
 All of the below are `Network` instances, exported as constants from the `Networks` namespace. All of these networks 
 are supported and useable on the Synapse Protocol.
 
-- `ARBITRUM`
+- `ETH`
   - Constructor params:
-    - `name:        "Arbitrum"`
-    - `names:      ["arbi", "arb"]`
-    - `chainId:      ChainId.ARBITRUM`
-    - `chainSymbol: "ETH`
-
-- `AVALANCHE`
-  - Constructor params:
-    - `name:        "Avalanche C-Chain"`
-    - `names:      ["avalanche", "avax"]`
-    - `chainId:      ChainId.AVALANCHE`
-    - `chainSymbol: "AVAX"`
+    - `name:          "Ethereum Mainnet"`
+    - `names:        ["eth", "mainnet"]`
+    - `chainId:       ChainId.ETH`
+    - `chainCurrency: "ETH"`
 
 - `BSC`
   - Constructor params:
-    - `name:        "Binance Smart Chain"`
-    - `names:      ["smart chain", "bsc"]`
-    - `chainId:      ChainId.BSC`
-    - `chainSymbol: "BNB"`
-
-- `ETH`
-  - Constructor params:
-    - `name:        "Ethereum Mainnet"`
-    - `names:      ["eth", "mainnet"]`
-    - `chainId:      ChainId.ETH`
-    - `chainSymbol: "ETH"`
-
-- `FANTOM`
-  - Constructor params:
-    - `name:        "Fantom"`
-    - `names:      ["ftm"]`
-    - `chainId:      ChainId.FANTOM`
-    - `chainSymbol: "FTM"`
+    - `name:          "Binance Smart Chain"`
+    - `names:        ["smart chain", "bsc"]`
+    - `chainId:       ChainId.BSC`
+    - `chainCurrency: "BNB"`
 
 - `POLYGON`
   - Constructor params:
-    - `name:        "Polygon"`
-    - `names:      ["poly", "matic"]`
-    - `chainId:      ChainId.POLYGON`
-    - `chainSymbol: "MATIC"`
+    - `name:          "Polygon"`
+    - `names:        ["poly", "matic"]`
+    - `chainId:       ChainId.POLYGON`
+    - `chainCurrency: "MATIC"`
+
+- `FANTOM`
+  - Constructor params:
+    - `name:          "Fantom"`
+    - `names:        ["ftm"]`
+    - `chainId:       ChainId.FANTOM`
+    - `chainCurrency: "FTM"`
+    
+- `ARBITRUM`
+  - Constructor params:
+    - `name:          "Arbitrum"`
+    - `names:        ["arbi", "arb"]`
+    - `chainId:       ChainId.ARBITRUM`
+    - `chainCurrency: "ETH`
+
+- `AVALANCHE`
+  - Constructor params:
+    - `name:          "Avalanche C-Chain"`
+    - `names:        ["avalanche", "avax"]`
+    - `chainId:       ChainId.AVALANCHE`
+    - `chainCurrency: "AVAX"`
 
 - `HARMONY`
   - Constructor params:
-    - `name:        "Harmony"`
-    - `chainId:      ChainId.HARMONY`
-    - `chainSymbol: "ONE"`
+    - `name:          "Harmony"`
+    - `chainId:       ChainId.HARMONY`
+    - `chainCurrency: "ONE"`
 
 
 ## Exported functions

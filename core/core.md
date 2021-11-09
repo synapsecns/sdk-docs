@@ -2,10 +2,9 @@
 
 ## Contents
 
-- [Installation/General usage of the NPM module](./installation)
+- [Installation/General usage of the NPM module](./installation/Installation.md)
 - [Networks](./networks)
-  - [ChainId namespace](./networks/ChainId.md)
-  - [Networks namespace](./networks/Networks.md)
+  - [ChainId](./networks/ChainId.md)
+  - [Networks](./networks/Networks.md)
 - [Tokens](./tokens)
   - [Token class](./tokens/Token.md)
-  - [SwapType namespace](./tokens/SwapType.md)

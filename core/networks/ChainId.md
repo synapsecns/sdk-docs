@@ -1,6 +1,6 @@
 # ChainId
 
-`namespace ChainId` provides constants of Chain IDs for blockchains supported by the SDK.
+The `ChainId` namespace provides constants of Chain IDs for blockchains supported by the SDK.
 
 All Chain IDs defined in this namespace are exported as the standard JS `number` type. This is to enable simple interoperability of these values between various codebases. 
 
@@ -42,24 +42,24 @@ function example2(chainId: BigNumberish) {
 All of the below are standard NodeJS `number`s, exported as constants from the `ChainId` namespace. All of these Chain IDs
 are supported and useable on the Synapse Protocol.
 
+- `ETH` (Ethereum mainnet)
+  - Value: `1`
+
+- `BSC` (Binance Smart Chain mainnet)
+  - Value: `56`
+
+- `POLYGON` (Polygon Mainnet)
+  - Value: `137`
+
+- `FANTOM` (Fantom mainnet)
+  - Value: `250`
+
 - `ARBITRUM` (Arbitrum mainnet)
   - Value: `42161`
   
 - `AVALANCHE` (Avalanche C-Chain mainnet)
   - Value: `43114`
-
-- `BSC` (Binance Smart Chain mainnet)
-  - Value: `56`
-
-- `ETH` (Ethereum mainnet)
-  - Value: `1`
-
-- `FANTOM` (Fantom mainnet)
-  - Value: `250`
-
-- `POLYGON` (Polygon Mainnet)
-  - Value: `137`
-
+  
 - `HARMONY` (Harmony mainnet)
   - Value: `1666600000`
 
