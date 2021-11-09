@@ -28,7 +28,7 @@ import {ContractReceipt} from "@ethersproject/contracts";
 // PROVIDER is for the purposes of this example only. 
 const PROVIDER = new JsonRpcProvider("https://api.avax.network/ext/bc/C/rpc");
 
-const NETWORK = Networks.Avalanche;
+const NETWORK = Networks.AVALANCHE;
 
 const SYNAPSE_BRIDGE = new Bridge.SynapseBridge({
     network:  NETWORK,
