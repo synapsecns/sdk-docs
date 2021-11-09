@@ -82,6 +82,17 @@ async function doBridgeTransaction() {
         amountFrom: INPUT_AMOUNT,  // Amount of `tokenFrom` being sent
     });
     
+    // build an ERC20 Approve transaction to have the user send so that the Synapse Bridge contract
+    // can do its thing.
+    // If desired, `amount` can be passed in the args object, which overrides
+    // the default behavior of "infinite approval" for the token. 
+    let populatedApproveTxn = await SYNAPSE_BRIDGE.buildApproveTransaction({
+        token: TOKEN_IN,
+        signer: null      // This should NOT be null when used for real
+    })
+    
+    // insert some web3 black magic involving populatedApproveTxn here...
+    
     // initiateBridgeTransaction requires an ethers Signer instance to be 
     // passed to it in order to actually do the bridge transaction.
     // An optional field `addressTo` can be passed, which will send tokens
@@ -92,7 +103,7 @@ async function doBridgeTransaction() {
         tokenTo:    TOKEN_OUT,       // Token to be received on the destination chain, in this case USDC
         amountFrom: INPUT_AMOUNT,    // Amount of `tokenFrom` being sent
         amountTo:   amountToReceive, // minimum desired amount of `tokenTo` to receive on the destination chain
-        signer:     null, // this should NOT be null when being used for real
+        signer:     null,            // this should NOT be null when used for real
     });
     
     // txReceipt is a fully populated ethers ContractReceipt instance.
