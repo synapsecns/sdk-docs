@@ -66,7 +66,7 @@ function getOutputEstimate() {
         .then(({ amountToReceive, bridgeFee }) => {
             let amountOutFormatted = formatUnits(
                 amountToReceive,
-                tokenOut.decimals[chainOut]
+                TOKEN_OUT.decimals[chainOut]
             );
             console.log(`${amountOutFormatted} USDT will be received on the output chain`)
         })
