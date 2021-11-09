@@ -39,7 +39,7 @@ const
     TOKEN_IN   = Tokens.NUSD,
     TOKEN_OUT  = Tokens.USDT,
     CHAIN_OUT  = ChainId.BSC,
-    INPUT_AMOUNT: BigNumber = parseUnits("1000", tokenIn.decimals[ChainId.Avalanche]); // 1000 nUSD in Wei format
+    INPUT_AMOUNT: BigNumber = parseUnits("1000", tokenIn.decimals[NETWORK.chainId]); // 1000 nUSD in Wei format
 
 function checkSwapSupported() {
     let [swapSupported, notSupportedReason] = SYNAPSE_BRIDGE.swapSupported({
