@@ -142,4 +142,4 @@ are supported and useable on the Synapse Protocol.
   - Returns an array of `Network` instances corresponding to all networks supported by the Synapse Protocol.
   - Returns:
     - `Network[]`
-    - Array which contains the pre-defined `Network` instances `Arbitrum`, `Avalanche`, `BSC`, `Ethereum`, `Fantom`, `Polygon`, and `Harmony`.
+    - Array which contains the pre-defined `Network` instances `ARBITRUM`, `AVALANCHE`, `BSC`, `ETH`, `FANTOM`, `POLYGON`, and `HARMONY`.
