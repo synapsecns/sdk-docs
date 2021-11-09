@@ -31,7 +31,7 @@ function example(chainId: number) {
 function example2(chainId: BigNumberish) {
   let paramAsNum = ChainId.asNumber(chainId);
   
-  if (paramAsNum === ChainId.Fantom) {
+  if (paramAsNum === ChainId.FANTOM) {
     console.log(`${paramAsNum} is the Chain ID of the Fantom network!`);
   }
 }
@@ -42,25 +42,25 @@ function example2(chainId: BigNumberish) {
 All of the below are standard NodeJS `number`s, exported as constants from the `ChainId` namespace. All of these Chain IDs
 are supported and useable on the Synapse Protocol.
 
-- `Arbitrum`
+- `ARBITRUM` (Arbitrum mainnet)
   - Value: `42161`
   
-- `Avalanche`
+- `AVALANCHE` (Avalanche C-Chain mainnet)
   - Value: `43114`
 
-- `BSC`
+- `BSC` (Binance Smart Chain mainnet)
   - Value: `56`
 
-- `Ethereum`
+- `ETH` (Ethereum mainnet)
   - Value: `1`
 
-- `Fantom`
+- `FANTOM` (Fantom mainnet)
   - Value: `250`
 
-- `Polygon`
+- `POLYGON` (Polygon Mainnet)
   - Value: `137`
 
-- `Harmony`:
+- `HARMONY` (Harmony mainnet)
   - Value: `1666600000`
 
 ## Functions
@@ -85,4 +85,4 @@ are supported and useable on the Synapse Protocol.
   - Returns an array of `numbers` corresponding to the chain ids of all networks supported by the Synapse Protocol.
   - Returns:
     - `number[]`
-    - Array which contains the pre-defined chain id constants `Arbitrum`, `Avalanche`, `BSC`, `Ethereum`, `Fantom`, `Polygon`, and `Harmony`.
+    - Array which contains the pre-defined chain id constants `ARBITRUM`, `AVALANCHE`, `BSC`, `ETH`, `FANTOM`, `POLYGON`, and `HARMONY`.

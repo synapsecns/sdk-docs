@@ -24,9 +24,9 @@ function printNetworkNameFromChainId(chainId: number) {
   console.log(n.name);
 }
 
-printNetworkNameFromChainId(ChainId.Polygon); // outputs "Polygon"
+printNetworkNameFromChainId(ChainId.POLYGON); // outputs "Polygon"
 
-const nativeCurrency: string = Networks.Avalanche.chainSymbol;
+const nativeCurrency: string = Networks.AVALANCHE.chainSymbol;
 
 console.log(`The native currency symbol for the Avalanche network is ${nativeCurrency}`); // nativeCurrency will output as "AVAX"
 ```
@@ -65,18 +65,18 @@ The `Network` class also provides the following functions:
 All of the below are `Network` instances, exported as constants from the `Networks` namespace. All of these networks 
 are supported and useable on the Synapse Protocol.
 
-- `Arbitrum`
+- `ARBITRUM`
   - Constructor params:
     - `name:        "Arbitrum"`
     - `names:      ["arbi", "arb"]`
-    - `chainId:      ChainId.Arbitrum`
+    - `chainId:      ChainId.ARBITRUM`
     - `chainSymbol: "ETH`
 
-- `Avalanche`
+- `AVALANCHE`
   - Constructor params:
     - `name:        "Avalanche C-Chain"`
     - `names:      ["avalanche", "avax"]`
-    - `chainId:      ChainId.Avalanche`
+    - `chainId:      ChainId.AVALANCHE`
     - `chainSymbol: "AVAX"`
 
 - `BSC`
@@ -86,31 +86,31 @@ are supported and useable on the Synapse Protocol.
     - `chainId:      ChainId.BSC`
     - `chainSymbol: "BNB"`
 
-- `Ethereum`
+- `ETH`
   - Constructor params:
     - `name:        "Ethereum Mainnet"`
     - `names:      ["eth", "mainnet"]`
-    - `chainId:      ChainId.Ethereum`
+    - `chainId:      ChainId.ETH`
     - `chainSymbol: "ETH"`
 
-- `Fantom`
+- `FANTOM`
   - Constructor params:
     - `name:        "Fantom"`
     - `names:      ["ftm"]`
-    - `chainId:      ChainId.Fantom`
+    - `chainId:      ChainId.FANTOM`
     - `chainSymbol: "FTM"`
 
-- `Polygon`
+- `POLYGON`
   - Constructor params:
     - `name:        "Polygon"`
     - `names:      ["poly", "matic"]`
-    - `chainId:      ChainId.Polygon`
+    - `chainId:      ChainId.POLYGON`
     - `chainSymbol: "MATIC"`
 
-- `Harmony`
+- `HARMONY`
   - Constructor params:
     - `name:        "Harmony"`
-    - `chainId:      ChainId.Harmony`
+    - `chainId:      ChainId.HARMONY`
     - `chainSymbol: "ONE"`
 
 

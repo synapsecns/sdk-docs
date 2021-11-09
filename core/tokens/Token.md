@@ -16,7 +16,6 @@ Unless otherwise specified, all instance variables are **read only** and set by 
     on all other chains.
 - `addresses` (`{ [chainId: number] => string }`) - This field is similarly shaped to `decimals`, in that it is a mapping with shape `chain id => address for chain (string)`,
     containing the on-chain addresses of this token for respective Chain ID values.
-- `swapType` (`string`) - The "swap type" of this token, explained further in [SwapType](./SwapType.md).
 
 ## Functions 
 
