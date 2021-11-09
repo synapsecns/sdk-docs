@@ -43,9 +43,9 @@ const
 
 function checkSwapSupported() {
     let [swapSupported, notSupportedReason] = SYNAPSE_BRIDGE.swapSupported({
-        tokenFrom:  TOKEN_IN,
-        chainIdTo:  CHAIN_OUT,
-        tokenTo:    TOKEN_OUT,
+        tokenFrom:  TOKEN_IN,  // token to send from the source chain, in this case nUSD on Avalanche
+        chainIdTo:  CHAIN_OUT, // Chain ID of the destination chain, in this case BSC
+        tokenTo:    TOKEN_OUT, // Token to be received on the destination chain, in this case USDC
     });
     
     // swapSupported will be `true` if the swap/bridge between tokens on networks is possible,
@@ -58,9 +58,9 @@ function checkSwapSupported() {
 // to USDT on Binance Smart Chain.
 function getOutputEstimate() {
     SYNAPSE_BRIDGE.getOutputEstimate({
-        tokenFrom:  TOKEN_IN,
-        chainIdTo:  CHAIN_OUT,
-        tokenTo:    TOKEN_OUT,
+        tokenFrom:  TOKEN_IN,      // token to send from the source chain, in this case nUSD on Avalanche
+        chainIdTo:  CHAIN_OUT,     // Chain ID of the destination chain, in this case BSC
+        tokenTo:    TOKEN_OUT,     // Token to be received on the destination chain, in this case USDC
         amountFrom: INPUT_AMOUNT,
     })
         .then(({ amountToReceive, bridgeFee }) => {
@@ -76,10 +76,10 @@ function getOutputEstimate() {
 async function doBridgeTransaction() {
     // get minimum desired output
     const { amountToReceive } = await SYNAPSE_BRIDGE.getOutputEstimate({
-        tokenFrom:  TOKEN_IN,
-        chainIdTo:  CHAIN_OUT,
-        tokenTo:    TOKEN_OUT,
-        amountFrom: INPUT_AMOUNT,
+        tokenFrom:  TOKEN_IN,      // token to send from the source chain, in this case nUSD on Avalanche
+        chainIdTo:  CHAIN_OUT,     // Chain ID of the destination chain, in this case BSC
+        tokenTo:    TOKEN_OUT,     // Token to be received on the destination chain, in this case USDC
+        amountFrom: INPUT_AMOUNT,  // Amount of `tokenFrom` being sent
     });
     
     // initiateBridgeTransaction requires an ethers Signer instance to be 
@@ -87,11 +87,11 @@ async function doBridgeTransaction() {
     // An optional field `addressTo` can be passed, which will send tokens
     // on the output chain to an address other than the address of the Signer instance.
     let txReceipt: ContractReceipt = await SYNAPSE_BRIDGE.initiateBridgeTransaction({
-        tokenFrom:  TOKEN_IN,
-        chainIdTo:  CHAIN_OUT,
-        tokenTo:    TOKEN_OUT,
-        amountFrom: INPUT_AMOUNT,
-        amountTo:   amountToReceive,
+        tokenFrom:  TOKEN_IN,        // token to send from the source chain, in this case nUSD on Avalanche
+        chainIdTo:  CHAIN_OUT,       // Chain ID of the destination chain, in this case BSC
+        tokenTo:    TOKEN_OUT,       // Token to be received on the destination chain, in this case USDC
+        amountFrom: INPUT_AMOUNT,    // Amount of `tokenFrom` being sent
+        amountTo:   amountToReceive, // minimum desired amount of `tokenTo` to receive on the destination chain
         signer:     null, // this should NOT be null when being used for real
     });
     
