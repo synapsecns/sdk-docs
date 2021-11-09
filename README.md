@@ -11,7 +11,7 @@ it is very helpful to know what to prioritize.
 ## Contents
 
 - [Core](./core)
-  - [Installation/General usage of the NPM module](./core/installation)
+  - [Installation/General usage of the NPM module](./core/installation/Installation.md)
   - [Networks](./core/networks)
     - [ChainId namespace](./core/networks/ChainId.md)
     - [Networks namespace](./core/networks/Networks.md)
