@@ -37,9 +37,22 @@ const SYNAPSE_BRIDGE = new Bridge.SynapseBridge({
 
 const
     TOKEN_IN   = Tokens.NUSD,
-    TOKEN_OUT = Tokens.USDT,
+    TOKEN_OUT  = Tokens.USDT,
     CHAIN_OUT  = ChainId.BSC,
     INPUT_AMOUNT: BigNumber = parseUnits("1000", tokenIn.decimals[ChainId.Avalanche]); // 1000 nUSD in Wei format
+
+function checkSwapSupported() {
+    let [swapSupported, notSupportedReason] = SYNAPSE_BRIDGE.swapSupported({
+        tokenFrom:  TOKEN_IN,
+        chainIdTo:  CHAIN_OUT,
+        tokenTo:    TOKEN_OUT,
+    });
+    
+    // swapSupported will be `true` if the swap/bridge between tokens on networks is possible,
+    // along with an empty string.
+    // If a swap/bridge ISN'T supported, swapSupported will be `false`, and `notSupportedReason`
+    // will provide a short reason for why the swap/bridge isn't possible.
+}
 
 // get the estimated output for a bridge from nUSD on Avalanche
 // to USDT on Binance Smart Chain.

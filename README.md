@@ -19,4 +19,5 @@ it is very helpful to know what to prioritize.
     - [Token class](./core/tokens/Token.md)
     - [SwapType namespace](./core/tokens/SwapType.md)
 - [Bridge](./bridge)
-  - [Example Uses](./bridge/Examples.md)
+  - [Bridge and SynapseBridge](./bridge/Bridge.md): Provides basic information about the `Bridge` namespace, 
+  as well as the `SynapseBridge` class contained within it, along with examples for using said class.
