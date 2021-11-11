@@ -22,7 +22,7 @@ import {
 import {JsonRpcProvider} from "@ethersproject/providers";
 import {parseUnits, formatUnits} from "@ethersproject/units";
 import {BigNumber} from "@ethersproject/bignumber";
-import {ContractReceipt} from "@ethersproject/contracts";
+import {ContractTransaction} from "@ethersproject/contracts";
 
 // Use your normal web3 provider here. 
 // PROVIDER is for the purposes of this example only. 
@@ -93,19 +93,32 @@ async function doBridgeTransaction() {
     
     // insert some web3 black magic involving populatedApproveTxn here...
     
-    // initiateBridgeTransaction requires an ethers Signer instance to be 
-    // passed to it in order to actually do the bridge transaction.
-    // An optional field `addressTo` can be passed, which will send tokens
-    // on the output chain to an address other than the address of the Signer instance.
-    let txReceipt: ContractReceipt = await SYNAPSE_BRIDGE.initiateBridgeTransaction({
-        tokenFrom:  TOKEN_IN,        // token to send from the source chain, in this case nUSD on Avalanche
-        chainIdTo:  CHAIN_OUT,       // Chain ID of the destination chain, in this case BSC
-        tokenTo:    TOKEN_OUT,       // Token to be received on the destination chain, in this case USDC
-        amountFrom: INPUT_AMOUNT,    // Amount of `tokenFrom` being sent
-        amountTo:   amountToReceive, // minimum desired amount of `tokenTo` to receive on the destination chain
-        signer:     null,            // this should NOT be null when used for real
-    });
-    
-    // txReceipt is a fully populated ethers ContractReceipt instance.
+    try {
+        // initiateBridgeTransaction requires an ethers Signer instance to be 
+        // passed to it in order to actually do the bridge transaction.
+        // An optional field `addressTo` can be passed, which will send tokens
+        // on the output chain to an address other than the address of the Signer instance.
+        //
+        // NOTE: initiateBridgeTransaction performs the step of actually sending/broadcasting the signed
+        // transaction on the source chain.
+        let bridgeTxn: ContractTransaction = await SYNAPSE_BRIDGE.initiateBridgeTransaction({
+            tokenFrom:  TOKEN_IN,        // token to send from the source chain, in this case nUSD on Avalanche
+            chainIdTo:  CHAIN_OUT,       // Chain ID of the destination chain, in this case BSC
+            tokenTo:    TOKEN_OUT,       // Token to be received on the destination chain, in this case USDC
+            amountFrom: INPUT_AMOUNT,    // Amount of `tokenFrom` being sent
+            amountTo:   amountToReceive, // minimum desired amount of `tokenTo` to receive on the destination chain
+            signer:     null,            // this should NOT be null when used for real
+        });
+
+        // Wait for at least one confirmation on the sending chain, this is an optional
+        // step and can be either omitted or implemented in a custom manner.
+        await bridgeTxn.wait(1);
+
+        console.log(`Bridge transaction hash: ${bridgeTxn.hash}`);
+        console.log(`Bridge transaction block number: ${bridgeTxn.blockNumber}`);
+    } catch (err) {
+        // deal with the caught error accordingly
+    }
+
 }
 ```
