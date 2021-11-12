@@ -23,6 +23,7 @@ import {JsonRpcProvider} from "@ethersproject/providers";
 import {parseUnits, formatUnits} from "@ethersproject/units";
 import {BigNumber} from "@ethersproject/bignumber";
 import {ContractTransaction} from "@ethersproject/contracts";
+import {Signer} from "@ethersproject/abstract-signer";
 
 // Use your normal web3 provider here. 
 // PROVIDER is for the purposes of this example only. 
@@ -56,8 +57,8 @@ function checkSwapSupported() {
 
 // get the estimated output for a bridge from nUSD on Avalanche
 // to USDT on Binance Smart Chain.
-function getOutputEstimate() {
-    SYNAPSE_BRIDGE.getOutputEstimate({
+function estimateBridgeTokenOutput() {
+    SYNAPSE_BRIDGE.estimateBridgeTokenOutput({
         tokenFrom:  TOKEN_IN,      // token to send from the source chain, in this case nUSD on Avalanche
         chainIdTo:  CHAIN_OUT,     // Chain ID of the destination chain, in this case BSC
         tokenTo:    TOKEN_OUT,     // Token to be received on the destination chain, in this case USDC
@@ -75,7 +76,7 @@ function getOutputEstimate() {
 
 async function doBridgeTransaction() {
     // get minimum desired output
-    const { amountToReceive } = await SYNAPSE_BRIDGE.getOutputEstimate({
+    const { amountToReceive } = await SYNAPSE_BRIDGE.estimateBridgeTokenOutput({
         tokenFrom:  TOKEN_IN,      // token to send from the source chain, in this case nUSD on Avalanche
         chainIdTo:  CHAIN_OUT,     // Chain ID of the destination chain, in this case BSC
         tokenTo:    TOKEN_OUT,     // Token to be received on the destination chain, in this case USDC
@@ -86,29 +87,27 @@ async function doBridgeTransaction() {
     // can do its thing.
     // If desired, `amount` can be passed in the args object, which overrides
     // the default behavior of "infinite approval" for the token. 
-    let populatedApproveTxn = await SYNAPSE_BRIDGE.buildApproveTransaction({
-        token: TOKEN_IN,
-        signer: null      // This should NOT be null when used for real
-    })
+    let populatedApproveTxn = await SYNAPSE_BRIDGE.buildApproveTransaction({token: TOKEN_IN});
     
     // insert some web3 black magic involving populatedApproveTxn here...
     
+    let signer: Signer; // use whatever conforms to the ethersjs Signer interface here
+    
     try {
-        // initiateBridgeTransaction requires an ethers Signer instance to be 
+        // executeBridgeTokenTransaction requires an ethers Signer instance to be 
         // passed to it in order to actually do the bridge transaction.
         // An optional field `addressTo` can be passed, which will send tokens
         // on the output chain to an address other than the address of the Signer instance.
         //
         // NOTE: initiateBridgeTransaction performs the step of actually sending/broadcasting the signed
         // transaction on the source chain.
-        let bridgeTxn: ContractTransaction = await SYNAPSE_BRIDGE.initiateBridgeTransaction({
+        let bridgeTxn: ContractTransaction = await SYNAPSE_BRIDGE.executeBridgeTokenTransaction({
             tokenFrom:  TOKEN_IN,        // token to send from the source chain, in this case nUSD on Avalanche
             chainIdTo:  CHAIN_OUT,       // Chain ID of the destination chain, in this case BSC
             tokenTo:    TOKEN_OUT,       // Token to be received on the destination chain, in this case USDC
             amountFrom: INPUT_AMOUNT,    // Amount of `tokenFrom` being sent
             amountTo:   amountToReceive, // minimum desired amount of `tokenTo` to receive on the destination chain
-            signer:     null,            // this should NOT be null when used for real
-        });
+        }, signer);
 
         // Wait for at least one confirmation on the sending chain, this is an optional
         // step and can be either omitted or implemented in a custom manner.
