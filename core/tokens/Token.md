@@ -2,7 +2,15 @@
 
 `Token` is a class which can represent any ERC20-compatible token on any given network, and is a data class.
 
-The Synapse Protocol SDK provides pre-defined `Token` instances for all tokens supported by the Synapse Protocol on all supported networks.
+The Synapse Protocol SDK provides pre-defined `Token` instances for all tokens supported by the Synapse Protocol on all supported networks
+in the `Tokens` namespace, which is easily imported like so:
+
+```typescript
+import {Tokens} from "@synapseprotocol/sdk";
+```
+
+You should not expect to ever have to instantiate a `Token` manually, and using a manually instantiated `Token` with
+various functions in the SDK will likely cause undefined behavior.
 
 ## Instance variables
 
