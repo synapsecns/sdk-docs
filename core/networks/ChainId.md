@@ -54,6 +54,9 @@ are supported and useable on the Synapse Protocol.
 - `FANTOM` (Fantom mainnet)
   - Value: `250`
 
+- `BOBA` (Boba mainnet)
+  - Value: `288`
+
 - `ARBITRUM` (Arbitrum mainnet)
   - Value: `42161`
   
@@ -85,4 +88,4 @@ are supported and useable on the Synapse Protocol.
   - Returns an array of `numbers` corresponding to the chain ids of all networks supported by the Synapse Protocol.
   - Returns:
     - `number[]`
-    - Array which contains the pre-defined chain id constants `ARBITRUM`, `AVALANCHE`, `BSC`, `ETH`, `FANTOM`, `POLYGON`, and `HARMONY`.
+    - Array which contains the pre-defined chain id constants `ETH`, `BSC`, `POLYGON`, `FANTOM`, `BOBA`, `ARBITRUM`, `AVALANCHE`, and `HARMONY`.

@@ -41,7 +41,6 @@ For 99.9% of use cases, SDK users should only ever need the provided, pre-define
 A network contains the following read-only attributes:
 
 - `name` (`string`) - The primary or official name of the network, for example "Binance Smart Chain"
-- `names` (`string[]`) - "Unofficial" or shorthand names for the network
 - `chainCurrency` (`string`) - The native currency symbol for this network. Examples: "BNB" on Binance Smart Chain, "AVAX" on Avalanche.
 - `chainId` (`number`) - The network's Chain ID. For pre-defined `Network` instances, this will use a constant defined in the [ChainId](./ChainId.md) namespace.
 - `tokens` ([`Token[]`](../tokens/Token.md)]) - An array containing [Token](../tokens/Token.md) instances for all tokens which the Synapse Protocol supports on this network.
@@ -68,49 +67,49 @@ are supported and useable on the Synapse Protocol.
 - `ETH`
   - Constructor params:
     - `name:          "Ethereum Mainnet"`
-    - `names:        ["eth", "mainnet"]`
-    - `chainId:       ChainId.ETH`
+    - `chainId:        ChainId.ETH`
     - `chainCurrency: "ETH"`
 
 - `BSC`
   - Constructor params:
     - `name:          "Binance Smart Chain"`
-    - `names:        ["smart chain", "bsc"]`
-    - `chainId:       ChainId.BSC`
+    - `chainId:        ChainId.BSC`
     - `chainCurrency: "BNB"`
 
 - `POLYGON`
   - Constructor params:
     - `name:          "Polygon"`
-    - `names:        ["poly", "matic"]`
-    - `chainId:       ChainId.POLYGON`
+    - `chainId:        ChainId.POLYGON`
     - `chainCurrency: "MATIC"`
 
 - `FANTOM`
   - Constructor params:
     - `name:          "Fantom"`
-    - `names:        ["ftm"]`
-    - `chainId:       ChainId.FANTOM`
+    - `chainId:        ChainId.FANTOM`
     - `chainCurrency: "FTM"`
-    
+
+- `BOBA`
+  - Constructor params:
+    - `name:         "Boba Network"`
+    - `chainId:       ChainId.BOBA`
+    - `chainCurrency: "ETH"`
+
 - `ARBITRUM`
   - Constructor params:
     - `name:          "Arbitrum"`
-    - `names:        ["arbi", "arb"]`
-    - `chainId:       ChainId.ARBITRUM`
-    - `chainCurrency: "ETH`
+    - `chainId:        ChainId.ARBITRUM`
+    - `chainCurrency: "ETH"`
 
 - `AVALANCHE`
   - Constructor params:
     - `name:          "Avalanche C-Chain"`
-    - `names:        ["avalanche", "avax"]`
-    - `chainId:       ChainId.AVALANCHE`
+    - `chainId:        ChainId.AVALANCHE`
     - `chainCurrency: "AVAX"`
 
 - `HARMONY`
   - Constructor params:
     - `name:          "Harmony"`
-    - `chainId:       ChainId.HARMONY`
+    - `chainId:        ChainId.HARMONY`
     - `chainCurrency: "ONE"`
 
 
@@ -142,4 +141,4 @@ are supported and useable on the Synapse Protocol.
   - Returns an array of `Network` instances corresponding to all networks supported by the Synapse Protocol.
   - Returns:
     - `Network[]`
-    - Array which contains the pre-defined `Network` instances `ARBITRUM`, `AVALANCHE`, `BSC`, `ETH`, `FANTOM`, `POLYGON`, and `HARMONY`.
+    - Array which contains the pre-defined `Network` instances `ETH`, `BSC`, `POLYGON`, `FANTOM`, `BOBA`, `ARBITRUM`, `AVALANCHE`, and `HARMONY`.
