@@ -94,6 +94,12 @@ are supported and useable on the Synapse Protocol.
     - `chainId:       ChainId.BOBA`
     - `chainCurrency: "ETH"`
 
+- `MOONRIVER`
+  - Constructor params:
+    - `name:          "Moonriver"`
+    - `chainId:       ChainId.MOONRIVER`
+    - `chainCurrency: "MOVR"`
+
 - `ARBITRUM`
   - Constructor params:
     - `name:          "Arbitrum"`
@@ -141,4 +147,4 @@ are supported and useable on the Synapse Protocol.
   - Returns an array of `Network` instances corresponding to all networks supported by the Synapse Protocol.
   - Returns:
     - `Network[]`
-    - Array which contains the pre-defined `Network` instances `ETH`, `BSC`, `POLYGON`, `FANTOM`, `BOBA`, `ARBITRUM`, `AVALANCHE`, and `HARMONY`.
+    - Array which contains the pre-defined `Network` instances `ETH`, `BSC`, `POLYGON`, `FANTOM`, `BOBA`, `MOONRIVER`, `ARBITRUM`, `AVALANCHE`, and `HARMONY`.

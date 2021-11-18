@@ -2,9 +2,9 @@
 
 For general use of the Synapse Protocol SDK, installation is easy. 
 
-If using npm: `npm i @synapseprotocol/sdk`
+If using npm: `npm i @synapseprotocol/sdk@latest`
 
-If using yarn: `yarn add @synapseprotocol/sdk`
+If using yarn: `yarn add @synapseprotocol/sdk@latest`
 
 
 ## Dependencies
@@ -19,4 +19,5 @@ If using yarn: `yarn add @synapseprotocol/sdk`
 - @ethersproject/contracts
 - @ethersproject/providers
 - @ethersproject/units
+- @ethersproject/wallet
 - ethers
