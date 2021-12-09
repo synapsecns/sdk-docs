@@ -21,7 +21,9 @@ import {
     Bridge, 
     Tokens, 
     ChainId, 
-    Networks
+    Networks,
+    swappableTokens,
+    NetworkSwappableTokensMap
 } from "@synapseprotocol/sdk";
 
 import {JsonRpcProvider} from "@ethersproject/providers";
@@ -46,6 +48,115 @@ const
     TOKEN_OUT  = Tokens.USDT,
     CHAIN_OUT  = ChainId.BSC,
     INPUT_AMOUNT: BigNumber = parseUnits("1000", tokenIn.decimals(NETWORK.chainId)); // 1000 nUSD in Wei format
+
+
+function listSupportedSwaps() {
+    // Get an object containing supported output tokens from one chain to all others
+    let fromAvaxSupportedOutputs: NetworkSwappableTokensMap = swappableTokens(ChainId.AVALANCHE);
+    /*
+    Output structure: { chain id: [ array of Token objects ] }
+    
+    Output:
+    {
+        '1': [
+            {
+              name: 'Dai',
+              symbol: 'DAI',
+            },
+            {
+              name: 'USD Circle',
+              symbol: 'USDC',
+            },
+            {
+              name: 'USD Tether',
+              symbol: 'USDT',
+            },
+            {
+              name: 'Synapse nUSD',
+              symbol: 'nUSD',
+            },
+            {
+              name: 'Synapse',
+              symbol: 'SYN',
+            }
+        ],
+        '10': [
+            {
+              name: 'Synapse',
+              symbol: 'SYN',
+            }
+        ],
+        '56': [
+            {
+              name: 'Binance USD',
+              symbol: 'BUSD',
+            },
+            {
+              name: 'USD Circle',
+              symbol: 'USDC',
+            },
+            {
+              name: 'USD Tether',
+              symbol: 'USDT',
+            },
+            {
+              name: 'Synapse nUSD',
+              symbol: 'nUSD',
+            },
+            {
+              name: 'Synapse',
+              symbol: 'SYN',
+            },
+            {
+              name: 'Feisty Doge',
+              symbol: 'NFD',
+            }
+        ],
+        '137': [
+            {
+              name: 'Dai',
+              symbol: 'DAI',
+            },
+            ...
+        ],
+        ...
+    }
+     */
+    
+    
+    let fromAvaxToBSCSupportedOutputs: NetworkSwappableTokensMap = swappableTokens(ChainId.AVALANCHE, ChainId.BSC);
+    /*
+    Output (same structure as above):
+    {
+        '56': [
+            {
+              name: 'Binance USD',
+              symbol: 'BUSD',
+            },
+            {
+              name: 'USD Circle',
+              symbol: 'USDC',
+            },
+            {
+              name: 'USD Tether',
+              symbol: 'USDT',
+            },
+            {
+              name: 'Synapse nUSD',
+              symbol: 'nUSD',
+            },
+            {
+              name: 'Synapse',
+              symbol: 'SYN',
+            },
+            {
+              name: 'Feisty Doge',
+              symbol: 'NFD',
+            }
+        ]
+    }
+     */
+}
 
 function checkSwapSupported() {
     let [swapSupported, notSupportedReason] = SYNAPSE_BRIDGE.swapSupported({
