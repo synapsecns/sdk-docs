@@ -1,3 +1,5 @@
+# THIS REPO IS ARCHIVED AND NOT CURRENT. PLEASE SEE https://github.com/synapsecns/sdk/wiki FOR THE MOST UP TO DATE DOCS.
+
 # Synapse Protocol SDK Documentation
 
 This repository contains documentation for the Synapse Protocol NodeJS SDK.
